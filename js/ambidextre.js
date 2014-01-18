@@ -31,7 +31,7 @@
                 element.classList.add(element.getAttribute('data-set'));
             })(this.movers[i]);
         },
-        //Detect which hand is use
+        //Detect which hand is in use
         handleDeviceOrientation: function(e) {
             var self = Ambidextre; 
                 self.gamma = Math.floor(e.gamma);
@@ -49,7 +49,7 @@
         noMoreEvents: function() {
             window.removeEventListener('deviceorientation', this.handleDeviceOrientation, false);
         },
-        //Pop a block to ask if the user really use his left hand
+        //Pop a block to ask if the user really use is left hand
         pop: function() {
             var self = this,
                 aside = document.createElement('aside'),
