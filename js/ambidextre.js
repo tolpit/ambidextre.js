@@ -8,7 +8,7 @@
         verif: null,
         init: function() {
             if(!this.support()) return;
-
+            
             this.setMovers();
             window.addEventListener("deviceorientation", this.handleDeviceOrientation, false);
 
@@ -20,18 +20,19 @@
         },
         //Check if navigator support deviceorientation event
         support: function() { 
-            return 'DeviceOrientationEvent' in document.documentElement;
+            return 'DeviceOrientationEvent' in window;
         },
         //Get all the elements to move
         setMovers: function() {
             var elements = document.querySelectorAll('[data-ambidextre]');
-        
+            
             for(var i = 0; i < elements.length; i++) 
                 this.movers.push(elements[i]);            
         },
         //Apply the change
         setOrientation: function() {
             for(var i = 0; i < this.movers.length; i++) (function(element) {
+                console.log(element);
                 element.classList.add(element.getAttribute('data-set'));
             })(this.movers[i]);
         },

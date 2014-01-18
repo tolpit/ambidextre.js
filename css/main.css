@@ -4,28 +4,39 @@ body {
     background-color: whitesmoke; 
 }
 
+article { padding: 30px; }
+p { padding: 5px; }
+
 nav { 
     position: fixed;
     box-sizing: border-box;
-    width: 20%; height: 100%; 
+    width: 30%; height: 100%; 
     background-color: grey;
     top: 0;
+    transition: -webkit-transform .25s linear;
+    z-index: 4;
+}
+
+nav:not(.left) {
     padding-right: 20px;
-    right: calc(-20% + 30px);
+    right: calc(-30% + 30px);
     text-align: right;
-    transition: right .25s linear, left .25s linear;
 }
 
 nav::after {
-    content: "\2630";
+    content: "Menu";
     font-size: 1.5em;
-    display: block;
+    width: 25px; height: 25px;
     position: absolute;
     color: white;
-    top: 10px; left: 5px;
+    top: 10px; 
+}
+nav:not(.left)::after {
+    left: 5px;
+    -webkit-transform: rotate(-90deg) translate(-50px, -5px);
 }
 nav:hover {
-    right: 0;
+    -webkit-transform: translateX(-50%);
 }
 
 .link {
@@ -33,15 +44,53 @@ nav:hover {
     padding: 10px; 
 }
 
-.right { 
-    left: calc(-20% + 20px);
+.left { 
+    width: 33%;
+    padding-left: 20px;
+    left: calc(-30% + 20px);
     text-align: left; 
 }
-.right::after {
-    left: auto;
+.left::after {
     right: 5px;
+    -webkit-transform: rotate(90deg) translate(50px, -5px);
 }
-.right:hover {
-    right: auto;
-    left: 0;
+.left:hover {
+    -webkit-transform: translateX(50%);
+}
+
+.pop {
+    position: fixed;
+    background-color: gainsboro;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+}
+
+[class^="btn-"] {
+    position: relative;
+    padding: 8px;
+    bottom: 15px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 1.2em;
+    color: linen;
+    -webkit-transition: box-shadow .25s ease-in;
+    -moz-transition: box-shadow .25s ease-in;
+    -ms-transition: box-shadow .25s ease-in;
+    -o-transition: box-shadow .25s ease-in;
+    transition: box-shadow .25s ease-in;
+    cursor: pointer; 
+}
+[class^="btn-"]:hover {
+    box-shadow: 0 0 8px gray inset;
+}
+.btn-left {
+    background-color: seagreen;
+    float: left;
+    left: 40px
+}
+.btn-right {
+    background-color: tomato;
+    float: right;
+    right: 40px;
 }
