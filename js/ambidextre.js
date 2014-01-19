@@ -90,7 +90,7 @@
         }
     };
 
-    window.onload = function() {
+    window.addEventListener('load', function() {
         Ambidextre.init();
-    }
+    }, false);
 })();
